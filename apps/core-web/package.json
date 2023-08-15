@@ -1,0 +1,22 @@
+{
+  "name": "core-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "start:dashboard": "cross-env NODE_ENV=development npx webpack-dashboard -- webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --progress",
+    "build:dashboard": "cross-env NODE_ENV=production npx webpack-dashboard -- webpack",
+    "build:report": "cross-env NODE_ENV=production BUNDLE_ANALYZER=true npx webpack-dashboard -- webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
