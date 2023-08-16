@@ -3,31 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "start:dashboard": "cross-env NODE_ENV=development npx webpack-dashboard -- webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack --progress",
-    "build:dashboard": "cross-env NODE_ENV=production npx webpack-dashboard -- webpack",
-    "build:report": "cross-env NODE_ENV=production BUNDLE_ANALYZER=true npx webpack-dashboard -- webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^1.4.0",
-    "jsencrypt": "^3.3.2",
-    "path-to-regexp": "^6.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-router-dom": "6.11.2",
-    "zustand": "4.3.8"
-  },
-  "devDependencies": {
-    "@sportback/webpack": "workspace:^",
-    "cross-env": "^7.0.3",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  }
+  "license": "ISC"
 }

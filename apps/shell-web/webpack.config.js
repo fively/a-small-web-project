@@ -28,7 +28,7 @@ export default () => {
         clean: true,
         filename: 'js/[name].js',
         path: resolve(__dirname, './dist'),
-        publicPath: 'http://localhost:3001/'
+        publicPath: 'http://localhost:3000/'
       }
       break
   }
@@ -42,10 +42,13 @@ export default () => {
     },
     resolve: {
       alias: {
-        '@': resolve(__dirname, '../src')
+        '@': resolve(__dirname, './src')
       },
       extensions: ['.tsx', '.ts', '.js', '.json'],
       mainFiles: ['index']
+    },
+    devServer: {
+      port: 3000
     }
     // federation: {
     //   mode: 'main', // 应用模式：main-主应用， child-子应用
