@@ -10,56 +10,47 @@ const { parse: json5Parse } = json5
  * @param {*} options 传入自定义参数
  */
 export const useLoader = (config, options) => {
-  const { mode = 'development' } = config
+  const { mode = 'production' } = config
+
+  // 生产和开发环境，使用不同loader
+  let styleLoader = {
+    loader: 'style-loader',
+    options: {
+      esModule: true
+    }
+  }
+  if (mode === 'production') {
+    styleLoader = {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        esModule: true
+      }
+    }
+  }
 
   config.module.rules = [
     {
-      test: /\.tsx?$/, // 解析ts、tsx
+      test: /\.[jt]sx?$/,
       exclude: /node_modules\/(?!(?:@sportback)\/).*/,
-      use: [
-        {
-          loader: 'ts-loader',
-          options: {
-            // 设置为“仅编译”，关闭类型检查
-            transpileOnly: true,
-            happyPackMode: true
-          }
-        }
-      ]
-    },
-    {
-      test: /\.jsx?$/, // 解析js、jsx
-      exclude: /node_modules\/(?!(?:@sportback)\/).*/,
-      use: ['babel-loader']
+      loader: 'esbuild-loader',
+      options: {
+        target: 'es2015',
+      }
     },
     {
       test: /\.css$/,
       exclude: /node_modules/,
-      use: [
-        mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-        'css-loader',
-        'postcss-loader'
-      ]
+      use: [styleLoader, 'css-loader', 'postcss-loader']
     },
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-      use: [
-        mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-        'css-loader',
-        'postcss-loader',
-        'sass-loader'
-      ]
+      use: [styleLoader, 'css-loader', 'postcss-loader', 'sass-loader']
     },
     {
       test: /\.less$/,
       exclude: /node_modules/,
-      use: [
-        mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-        'css-loader',
-        'postcss-loader',
-        'less-loader'
-      ]
+      use: [styleLoader, 'css-loader', 'postcss-loader', 'less-loader']
     },
     {
       test: /\.(png|jpe?g)$/,

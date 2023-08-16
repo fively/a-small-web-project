@@ -63,7 +63,7 @@ export const usePlugin = (config, options) => {
   if (mode === 'production') {
     config.plugins.push(
       new MiniCssExtractPlugin({
-        filename: 'css/[contenthash].css'
+        filename: 'css/[contenthash:8].css'
       })
     )
 

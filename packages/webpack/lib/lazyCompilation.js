@@ -4,6 +4,8 @@
  * @returns
  */
 export const useLazyCompilation = (config) => {
+  if (config.mode === 'production') return
+  
   config.experiments = {
     lazyCompilation: true
   }

@@ -1,5 +1,4 @@
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
-
+import TerserPlugin from 'terser-webpack-plugin'
 /**
  * 处理构建优化
  * @param {*} config
@@ -11,7 +10,13 @@ export const useOptimization = (config, options) => {
   if (mode === 'production') {
     config.optimization = {
       usedExports: true,
-      minimizer: [new CssMinimizerPlugin()]
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          minify: TerserPlugin.esbuildMinify,
+          terserOptions: {}
+        })
+      ]
     }
   } else {
     config.optimization = {

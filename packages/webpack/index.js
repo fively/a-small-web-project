@@ -5,6 +5,7 @@ import { useLazyCompilation } from './lib/lazyCompilation.js'
 import { useFederation } from './lib/federation.js'
 import { useOptimization } from './lib/optimization.js'
 import { useCache } from './lib/cache.js'
+import { useDevServer } from './lib/devServer.js'
 
 /**
  * 构建器
@@ -43,6 +44,9 @@ export const builder = (options) => {
 
   // 处理模块联邦
   useFederation(config, options)
+
+  // 开启devserver
+  useDevServer(config, options)
 
   return config
 }
