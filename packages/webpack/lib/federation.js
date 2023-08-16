@@ -1,10 +1,19 @@
-const { ModuleFederationPlugin } = require('webpack').container
+import webpack from 'webpack'
+const { ModuleFederationPlugin } = webpack.container
 
 /**
- * 创建联邦模块
- * @param param0
+ * 联邦模块
+ * @param {*} config
+ * @param {*} options
  * @returns
  */
-module.exports = ({ name, filename, exposes, shared }) => {
-  return new ModuleFederationPlugin({ name, filename, exposes, shared })
+export const useFederation = (config, options) => {
+  const { federation } = options
+  if (!federation) return
+
+  const { name, filename, exposes, shared } = federation
+
+  config.plugins.push(
+    new ModuleFederationPlugin({ name, filename, exposes, shared })
+  )
 }

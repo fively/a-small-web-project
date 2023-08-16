@@ -1,6 +1,6 @@
 import { resolve, dirname, basename } from 'node:path'
 import { fileURLToPath } from 'url'
-import builder from '@sportback/webpack'
+import { builder } from '@sportback/webpack'
 
 export default () => {
   // 获取当前环境
@@ -16,6 +16,7 @@ export default () => {
     // 生产环境输出
     case 'production':
       output = {
+        clean: true,
         filename: 'js/[name].[contenthash:8].js',
         path: resolve(__dirname, `../../dist/${basename(__dirname)}`),
         publicPath: 'auto'
@@ -24,6 +25,7 @@ export default () => {
     default:
       // 非生产环境输出
       output = {
+        clean: true,
         filename: 'js/[name].js',
         path: resolve(__dirname, './dist'),
         publicPath: 'http://localhost:3001/'
@@ -31,13 +33,20 @@ export default () => {
       break
   }
 
-  return builder({
+  const config = builder({
     mode: _nodeEnv,
     entry: './src/index.tsx',
     output,
     env: {
       path: resolve(__dirname, `./.env.${_nodeEnv}`) // env 文件地址
     },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, '../src')
+      },
+      extensions: ['.tsx', '.ts', '.js', '.json'],
+      mainFiles: ['index']
+    }
     // federation: {
     //   mode: 'main', // 应用模式：main-主应用， child-子应用
     //   name: 'coreApp', // 应用名称
@@ -54,4 +63,8 @@ export default () => {
     //   }
     // }
   })
+
+  console.log('config:', config)
+
+  return config
 }

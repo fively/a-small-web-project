@@ -1,21 +1,22 @@
-const webpack = require('webpack')
-const dotenv = require('dotenv')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+import webpack from 'webpack'
+import dotenv from 'dotenv'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
+import BundleAnalyzer from 'webpack-bundle-analyzer'
+import CompressionPlugin from 'compression-webpack-plugin'
+import DashboardPlugin from 'webpack-dashboard/plugin/index.js'
 
+const BundleAnalyzerPlugin = BundleAnalyzer.BundleAnalyzerPlugin
 /**
- * 生成插件
- * @param mode
- * @returns
+ * 添加插件
+ * @param {*} config
+ * @param {*} options
  */
-module.exports = (options) => {
-  const { mode = 'development', env } = options
-
-  const plugins = [
-    new DashboardPlugin(),
-    // fork 出子进程，专门用于执行类型检查
-    new ForkTsCheckerWebpackPlugin(),
+export const usePlugin = (config, options) => {
+  // html文件模版
+  config.plugins.push(
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',
@@ -28,15 +29,26 @@ module.exports = (options) => {
         minifyJS: true, // 在脚本元素和事件属性中缩小JavaScript(使用UglifyJS)
         minifyCSS: true // 缩小CSS样式元素和样式属性
       }
-    }),
+    })
+  )
+
+  // 命令行界面仪表盘
+  config.plugins.push(new DashboardPlugin())
+
+  // fork 出子进程，专门用于执行类型检查
+  config.plugins.push(new ForkTsCheckerWebpackPlugin())
+
+  // process.env
+  config.plugins.push(
     new webpack.ProvidePlugin({
       process: 'process/browser'
     })
-  ]
+  )
 
-  // 是否引入env文件
+  const { env = {}, mode = 'development', bundleAnalyzer = false } = options
+  // 写入环境变量数据
   if (env && env.path) {
-    plugins.push(
+    config.plugins.push(
       new webpack.DefinePlugin({
         'process.env': JSON.stringify(
           dotenv.config({
@@ -47,19 +59,15 @@ module.exports = (options) => {
     )
   }
 
+  // 生产环境增加插件
   if (mode === 'production') {
-    const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-    const TerserPlugin = require('terser-webpack-plugin')
-    const BundleAnalyzerPlugin =
-      require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-    const CompressionPlugin = require('compression-webpack-plugin')
-
-    plugins.push(
+    config.plugins.push(
       new MiniCssExtractPlugin({
         filename: 'css/[contenthash].css'
       })
     )
-    plugins.push(
+
+    config.plugins.push(
       new TerserPlugin({
         terserOptions: {
           compress: {
@@ -71,7 +79,7 @@ module.exports = (options) => {
       })
     )
 
-    plugins.push(
+    config.plugins.push(
       new CompressionPlugin({
         test: /.(js|css)$/, // 只生成css,js压缩文件
         filename: '[path][base].gz', // 文件命名
@@ -83,10 +91,13 @@ module.exports = (options) => {
     )
 
     // 打包后展示分析页面
-    if (process.env.BUNDLE_ANALYZER) {
-      plugins.push(new BundleAnalyzerPlugin())
+    if (bundleAnalyzer) {
+      config.plugins.push(new BundleAnalyzerPlugin())
     }
   }
 
-  return plugins
+  // 添加传入的插件
+  if (Array.isArray(options.plugins)) {
+    config.plugins.push(...options.plugins)
+  }
 }

@@ -1,18 +1,18 @@
-# a-small-web-project
+# A Small Web Project
 一个小的web项目
 
-##### Description
+## 简介
 打包构建：webpack
 技术栈：React
 
 
-##### Install
+## 安装
 
 ```
 pnpm install -w
 ```
 
-##### Start
+## 启动
 
 启动方式：pnpm dev <app_name>:[<config>]
 
@@ -22,7 +22,7 @@ pnpm dev core-web
 pnpm dev core-web:dashboard
 ```
 
-##### Build
+## Buil构建
 
 打包方式：pnpm build <app_name>:[<config>]
 
@@ -34,6 +34,6 @@ pnpm build core-web
 
 
 
-### Reference
+## 参考资料
 
 网站、github、及博客教程等

@@ -2,7 +2,7 @@ const { resolve, join } = require('node:path')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
-const createRules = require('./lib/rules')
+const createRules = require('./lib/loader')
 const createPlugin = require('./lib/plugin')
 const createFederation = require('./lib/federation')
 
