@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useRoutes, useLoaderData, useLocation, Outlet, Navigate, redirect } from 'react-router-dom'
+import { useRoutes, useLoaderData, useLocation, Outlet } from 'react-router-dom'
 import { importRemote } from '@sportback/core'
 import { NavLayout } from '@/features/layout'
 import { useRootStore } from '@/stores'
@@ -102,17 +102,13 @@ export const RootRoutes = () => {
 
   useEffect(() => {
     // 监听路由和地址变化
-    // if (isLoading.current) return
-
-    // / navigate('/eval/question')
-    redirect('/eva;/question')
-    return
+    if (isLoading.current) return
 
     // 访问根地址时，获取第一个path非空导航
-    // if (pathname === '/') {
-    //   const firstPath = getNodeByKey(appNavTree, 'path')
-    //   return window.location.replace(firstPath?.path)
-    // }
+    if (pathname === '/') {
+      const firstPath = getNodeByKey(appNavTree, 'path')
+      return window.location.replace(firstPath?.path)
+    }
   }, [routes, pathname])
 
   return useRoutes(routes)

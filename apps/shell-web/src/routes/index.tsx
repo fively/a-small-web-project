@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { RouterProvider, createBrowserRouter, useLocation } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { RootRoutes } from './root-routes'
 import { useRootStore } from '@/stores'
