@@ -15,7 +15,7 @@
   "author": "fively",
   "license": "ISC",
   "devDependencies": {
-    "@sportback/webpack": "workspace:^",
+    "@sportback/pack": "workspace:^",
     "@types/node": "^20.5.0",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "cross-env": "^7.0.3",

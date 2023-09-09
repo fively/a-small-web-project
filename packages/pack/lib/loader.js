@@ -61,7 +61,7 @@ export const useLoader = (config, options) => {
       },
       parser: {
         dataUrlCondition: {
-          maxSize: 4 * 1024
+          maxSize: 8 * 1024
         }
       }
     },

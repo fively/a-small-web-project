@@ -15,7 +15,7 @@
   },
   "include": [
     "**/*"
-  ],
+, "apps/shell-web/.postcssrc"  ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",

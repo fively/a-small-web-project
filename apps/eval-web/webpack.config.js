@@ -1,9 +1,11 @@
 import { resolve, dirname, basename } from 'node:path'
 import { fileURLToPath } from 'url'
-import { builder } from '@sportback/webpack'
+import { builder } from '../../packages/pack'
 
 export default () => {
   // 获取当前环境
+  const _PORT = process.env.PORT || 3000
+  console.log('_PORT:', _PORT)
   const _nodeEnv = process.env.NODE_ENV || 'development'
   const isProduction = _nodeEnv === 'production'
 
@@ -27,7 +29,7 @@ export default () => {
       clean: true,
       filename: 'js/[name].js',
       path: resolve(__dirname, './dist'),
-      publicPath: 'http://localhost:3000/'
+      publicPath: `http://localhost:${_PORT}/`
     }
   }
 
@@ -46,7 +48,7 @@ export default () => {
       mainFiles: ['index']
     },
     devServer: {
-      port: 3000
+      port: _PORT
     },
     bundleAnalyzer: !!process.env.BUNDLE_ANALYZER,
     federation: {

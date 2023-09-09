@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import TerserPlugin from 'terser-webpack-plugin'
+// import TerserPlugin from 'terser-webpack-plugin'
 import BundleAnalyzer from 'webpack-bundle-analyzer'
 import CompressionPlugin from 'compression-webpack-plugin'
 import DashboardPlugin from 'webpack-dashboard/plugin/index.js'
@@ -67,17 +67,17 @@ export const usePlugin = (config, options) => {
       })
     )
 
-    config.plugins.push(
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            drop_console: true,
-            drop_debugger: true
-          }
-        },
-        extractComments: true // 注释提取到单独的文件中
-      })
-    )
+    // config.plugins.push(
+    //   new TerserPlugin({
+    //     terserOptions: {
+    //       compress: {
+    //         drop_console: true,
+    //         drop_debugger: true
+    //       }
+    //     },
+    //     extractComments: true // 注释提取到单独的文件中
+    //   })
+    // )
 
     config.plugins.push(
       new CompressionPlugin({
@@ -92,7 +92,20 @@ export const usePlugin = (config, options) => {
 
     // 打包后展示分析页面
     if (bundleAnalyzer) {
-      config.plugins.push(new BundleAnalyzerPlugin())
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyserMode: 'server',
+          analyserHost: '127.0.0.1',
+          analyserPort: 8888,
+          reportFilename: 'report.html',
+          defaultSizes: 'parsed',
+          openAnalyser: true,
+          generateStatsFile: false,
+          statsFilename: 'stats.json',
+          statsOptions: null,
+          logLevel: 'info'
+        })
+      )
     }
   }
 
