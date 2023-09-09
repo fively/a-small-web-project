@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "esnext",
+    "target": "esnext",
+    "lib": ["es6", "dom"],
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "noImplicitAny": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "explainFiles": true,
+  },
+  "include": [
+    "**/*"
+, "apps/shell-web/.postcssrc"  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "a-small-web-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "preinstall": "node ./scripts/preinstall.js",
+    "start": "node ./scripts/start.js",
+    "build": "node ./scripts/build.js",
+    "lint": "eslint packages",
+    "lint-staged": "lint-staged"
+  },
+  "keywords": [],
+  "author": "fively",
+  "license": "ISC",
+  "devDependencies": {
+    "@sportback/pack": "workspace:^",
+    "@types/node": "^20.5.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.47.0",
+    "execa": "^7.2.0",
+    "husky": "^8.0.3",
+    "minimist": "^1.2.8",
+    "stylelint": "^15.10.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^34.0.0",
+    "typescript": "^5.1.6"
+  },
+  "lint-staged": {
+    "*.{js,jsx,tsx,ts}": [
+      "npm run lint"
+    ],
+    "*.{css,less,scss}": [
+      "stylelint --fix --allow-empty-input"
+    ]
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  }
+}

@@ -1,0 +1,15 @@
+.search-panel {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 16px;
+
+  .buttons {
+    flex: 1;
+  }
+
+  .form {
+    display: flex;
+    gap: 12px;
+  }
+}

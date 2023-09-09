@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "module": "esnext",
+        "target": "esnext",
+        "allowJs": true,
+        "jsx": "react-jsx",
+        "noImplicitAny": true,
+        "noEmit": true,
+        "moduleResolution": "node",
+        "strict": true,
+        "allowSyntheticDefaultImports": true,
+        "explainFiles": true,
+        "esModuleInterop": true,
+        "declaration": true,
+        "isolatedModules": true,
+        "declarationMap": true,
+    },
+    "include": [
+        "**/*"
+    ],
+    "exclude": [
+        "build",
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

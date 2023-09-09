@@ -1,0 +1,26 @@
+.navlayout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #f0f2f5;
+
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .aside {
+      width: 240px;
+      height: calc(100vh - 56px);
+      background: #fff;
+    }
+
+    .content {
+      flex: 1;
+      box-sizing: border-box;
+      height: calc(100vh - 56px);
+      padding: 16px;
+      overflow-y: auto;
+    }
+  }
+}

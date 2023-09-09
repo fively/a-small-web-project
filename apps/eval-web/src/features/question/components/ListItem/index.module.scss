@@ -1,0 +1,45 @@
+.list-item {
+  margin-bottom: 16px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px #ededed;
+  cursor: pointer;
+
+  header {
+    padding-bottom: 12px;
+    font-size: 16px;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .public-time {
+    position: relative;
+    top: 10px;
+    float: right;
+    font-size: 12px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
+  }
+
+  .content {
+    display: flex;
+    padding: 16px 0 0;
+  }
+
+  .desc {
+    flex: 1;
+    color: #8c8c8c;
+    font-size: 12px;
+  }
+
+  .buttons {
+    flex: 1;
+    text-align: right;
+
+    span {
+      margin-left: 20px;
+      font-size: 12px;
+    }
+  }
+}

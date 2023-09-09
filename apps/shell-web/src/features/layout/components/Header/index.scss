@@ -1,0 +1,84 @@
+.lt-header {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+
+  &__logo {
+    width: 150px;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__navs {
+    display: flex;
+    width: 100%;
+    height: 56px;
+
+    &-item {
+      height: 56px;
+      padding: 0 20px;
+      font-size: 14px;
+      line-height: 56px;
+
+      &.active {
+        color: rgb(103 58 183);
+        font-weight: 500;
+      }
+
+      &:hover {
+        color: rgb(103 58 183);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__avatar {
+    cursor: pointer;
+
+    img {
+      width: 45px;
+      height: 45px;
+      vertical-align: middle;
+      border-radius: 50%;
+    }
+  }
+
+  &-popover {
+    margin: 0;
+    padding: 0;
+
+    li {
+      height: 46px;
+      margin-bottom: 4px;
+      padding: 0 40px 0 20px;
+      font-size: 14px;
+      line-height: 46px;
+
+      .icon {
+        margin-right: 6px;
+      }
+
+      &.active {
+        color: rgb(103 58 183);
+        background: rgb(237 231 246);
+        cursor: pointer;
+      }
+
+      &:hover {
+        color: rgb(103 58 183);
+        background: rgb(237 231 246);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.ant-popover-inner {
+  padding: 4px 0 !important;
+  border-radius: 4px;
+}

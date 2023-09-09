@@ -1,0 +1,64 @@
+.lt-aside {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+
+    &-group {
+      margin-bottom: 16px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgb(227 232 239);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      & > header {
+        margin-bottom: 10px;
+        padding: 6px 0;
+        color: rgb(18 25 38);
+        font-weight: 500;
+        font-size: 13px;
+      }
+    }
+
+    &-items {
+      li {
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 4px;
+        padding: 8px 16px 8px 24px;
+        color: rgb(54 65 82);
+        font-weight: 350;
+        font-size: 14px;
+        line-height: 26px;
+
+        .icon {
+          margin-right: 6px;
+        }
+
+        &.active {
+          color: rgb(103 58 183);
+          background: rgb(237 231 246);
+          border-radius: 6px;
+          cursor: pointer;
+        }
+
+        &:hover {
+          color: rgb(103 58 183);
+          background: rgb(237 231 246);
+          border-radius: 6px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
