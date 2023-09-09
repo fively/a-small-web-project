@@ -14,11 +14,15 @@
 
 
 
+
+
 ## 想法
 
 想做个页面的壳，然后其他的页面以地址或者插件的形式接入，这是我觉得最理想的状态了。
 
 所以想到微前端，参考了[例子](https://github.com/module-federation/module-federation-examples)，最终选择了共享路由模式，比较贴近我想要的。
+
+
 
 
 
@@ -34,6 +38,8 @@
 
 
 
+
+
 ## 项目结构
 
 -- apps 项目页面地址
@@ -44,11 +50,15 @@
 
 
 
+
+
 ## 安装
 
 ```
 pnpm install -w
 ```
+
+
 
 
 
@@ -64,6 +74,8 @@ pnpm dev core-web:dashboard
 
 
 
+
+
 ## Buil构建
 
 打包方式：pnpm build <app_name>:[<config>]
@@ -75,6 +87,8 @@ pnpm build core-web
 注：pnpm启动单个项目时，语句有点长，所以才用shell脚本方式做了简化
 
 （自看shell指令写的sh文件，有点low。至于为啥这么干，就觉得用的顺手）
+
+
 
 
 
