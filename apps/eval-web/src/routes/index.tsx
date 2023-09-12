@@ -6,7 +6,6 @@ import { StatRoutes } from '@/features/stat'
 export default [
   {
     path: 'question',
-    element: <Outlet />,
     handle: {
       title: '问卷管理',
       functionCode: 'question'
@@ -15,16 +14,15 @@ export default [
   },
   {
     path: 'editor/:id',
-    element: <Outlet />,
     handle: {
       title: '问卷编辑',
-      functionCode: 'question-editor'
+      functionCode: 'question-editor',
+      fullScreen: true
     },
     children: EditorRoutes
   },
   {
     path: 'stat',
-    element: <Outlet />,
     handle: {
       title: '问卷统计',
       functionCode: 'question-stat'

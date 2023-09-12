@@ -5,7 +5,7 @@ import { AppModule, AppNav } from '@/types'
  * 加载功能权限
  * @returns
  */
-export const getFunctions = (): Promise<AppNav> => {
+export const getFunctions = (): Promise<any> => {
   return request.get('/auth/functions')
 }
 

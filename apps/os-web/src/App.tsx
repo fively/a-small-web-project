@@ -2,13 +2,20 @@ import { Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ThemeProvider } from '@sportback/core'
 
-import router from './routes/index'
+import routes from './routes/index'
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/os',
+      children: routes
+    }
+  ])
+
   return (
     <ThemeProvider>
       <Suspense>
-        <RouterProvider router={createBrowserRouter(router)} />
+        <RouterProvider router={router} />
       </Suspense>
     </ThemeProvider>
   )

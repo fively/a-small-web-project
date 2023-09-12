@@ -18,7 +18,8 @@ export type AppNav = {
   id: string
   rootId?: string
   parentId?: string
-  functionCode: string
+  parentIds?: string
+  code: string
   name: string
   icon?: string
   path: string
@@ -35,7 +36,7 @@ export type AppRoute = {
   index?: boolean
   code?: string
   handle?: object | any
-  element: any
+  element?: any
   errorElement?: any
   children?: Array<AppRoute> | any
 }

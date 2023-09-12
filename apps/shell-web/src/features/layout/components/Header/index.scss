@@ -48,14 +48,13 @@
     }
   }
 
-  &-popover {
+  &__popover {
     margin: 0;
     padding: 0;
 
     li {
       height: 46px;
-      margin-bottom: 4px;
-      padding: 0 40px 0 20px;
+      padding: 0 35px 0 20px;
       font-size: 14px;
       line-height: 46px;
 
@@ -74,11 +73,15 @@
         background: rgb(237 231 246);
         cursor: pointer;
       }
+
+      &:last-child {
+        border-top: 1px solid #ededed;
+      }
     }
   }
 }
 
 .ant-popover-inner {
-  padding: 4px 0 !important;
+  padding: 0 !important;
   border-radius: 4px;
 }

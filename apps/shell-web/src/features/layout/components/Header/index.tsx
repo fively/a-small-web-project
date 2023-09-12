@@ -1,4 +1,5 @@
-import { Popover, MenuProps } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { Popover } from 'antd'
 import { AppNav } from '@/types'
 import './index.scss'
 interface HeaderProps {
@@ -8,29 +9,16 @@ interface HeaderProps {
 }
 
 export const Header = ({ active, navs, onSelect }: HeaderProps) => {
-  const items: MenuProps['items'] = [
-    {
-      key: '1',
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-          个人中心
-        </a>
-      )
-    },
-    {
-      key: '2',
-      label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-          退出登录
-        </a>
-      )
-    }
-  ]
+  const navigate = useNavigate()
+  const handleTo = (url: string) => {
+    navigate(url)
+  }
 
   const popoverNav = () => {
     return (
       <ul className="lt-header__popover">
-        <li>个人中心</li>
+        <li onClick={() => handleTo('/user/center')}>个人中心</li>
+        <li onClick={() => handleTo('/user/setting')}>个人设置</li>
         <li>退出登录</li>
       </ul>
     )

@@ -7,13 +7,13 @@ import { AuthProvider } from './auth-provider'
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const documentTitle = useRootStore((state) => state.documentTitle)
   return (
-    <Suspense fallback={<PageLoading />}>
-      <HelmetProvider>
-        <Helmet>
-          <title>{documentTitle}</title>
-        </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        <title>{documentTitle}</title>
+      </Helmet>
+      <Suspense fallback={<PageLoading />}>
         <AuthProvider>{children}</AuthProvider>
-      </HelmetProvider>
-    </Suspense>
+      </Suspense>
+    </HelmetProvider>
   )
 }

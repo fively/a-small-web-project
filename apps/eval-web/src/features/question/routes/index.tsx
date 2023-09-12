@@ -9,7 +9,7 @@ export const QuestionRoutes = [
     element: <QuestionManage />,
     handle: {
       title: '问卷列表',
-      functionCode: ''
+      functionCode: 'question-manage'
     }
   },
   {
@@ -17,7 +17,7 @@ export const QuestionRoutes = [
     element: <QuestionTrash />,
     handle: {
       title: '问卷回收站',
-      functionCode: ''
+      functionCode: 'question-trash'
     }
   }
 ]

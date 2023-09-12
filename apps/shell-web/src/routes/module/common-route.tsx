@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom'
 import { lazily } from '@sportback/core'
+import { BasicLayout } from '@/features/layout'
 
 const { UserCenter, UserSetting } = lazily(() => import('@/features/user'))
 
@@ -9,7 +9,7 @@ const { UserCenter, UserSetting } = lazily(() => import('@/features/user'))
 export const CommonRoute = [
   {
     path: 'user',
-    element: <Outlet />,
+    element: <BasicLayout />,
     children: [
       {
         path: 'center',

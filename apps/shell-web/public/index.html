@@ -11,6 +11,70 @@
     <meta http-equiv="Cache-Control" content="max-age=0,no-cache,no-store,must-revalidate">
     <meta http-equiv="expires" content="0">
     <title>A Small Web Project</title>
+    <style>
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .spin-dot {
+            position: relative;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            transform: rotateZ(45deg);
+            transition: transform .3s cubic-bezier(.78, .14, .15, .86);
+            animation: rotate45 1.2s infinite linear;
+        }
+
+        .spin-dot .spin-dot-item {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            background-color: #673ab7;
+            opacity: .3;
+            animation: colorMove 1s infinite linear alternate;
+        }
+
+        .spin-dot .spin-dot-item:nth-child(1) {
+            top: 0;
+            left: 0;
+        }
+
+        .spin-dot .spin-dot-item:nth-child(2) {
+            top: 0;
+            right: 0;
+            animation-delay: .4s;
+        }
+
+        .spin-dot .spin-dot-item:nth-child(3) {
+            bottom: 0;
+            right: 0;
+            animation-delay: .8s;
+        }
+
+        .spin-dot .spin-dot-item:nth-child(4) {
+            bottom: 0;
+            left: 0;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes rotate45 {
+            to {
+                transform: rotate(405deg);
+            }
+        }
+
+        @keyframes colorMove {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -18,6 +82,14 @@
         You need to enable JavaScript to run this app.
     </noscript>
     <div id="root">
+        <div class="loading">
+            <span class="spin-dot spin-dot-spin">
+                <i class="spin-dot-item"></i>
+                <i class="spin-dot-item"></i>
+                <i class="spin-dot-item"></i>
+                <i class="spin-dot-item"></i>
+            </span>
+        </div>
     </div>
 </body>
 
