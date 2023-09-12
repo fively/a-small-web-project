@@ -1,11 +1,15 @@
 import { Button, Select, Input } from 'antd'
 import styles from './index.module.scss'
 
-export const SearchPanel = () => {
+type PropsType = {
+  onAdd: () => void
+}
+
+export const SearchPanel = ({ onAdd }: PropsType) => {
   return (
     <section className={styles['search-panel']}>
       <div className={styles.buttons}>
-        <Button size="middle" type="primary">
+        <Button size="middle" type="primary" onClick={onAdd}>
           新建问卷
         </Button>
       </div>

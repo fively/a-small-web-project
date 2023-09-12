@@ -1,7 +1,9 @@
+import { EditorHeader } from '../components/Header'
+
 export const Main = () => {
   return (
     <section>
-      <header>问卷设计界面</header>
+      <EditorHeader title="有奖调查问卷" />
     </section>
   )
 }

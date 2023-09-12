@@ -16,7 +16,7 @@ export default [
     path: 'editor/:id',
     handle: {
       title: '问卷编辑',
-      functionCode: 'question-editor',
+      functionCode: 'question',
       fullScreen: true
     },
     children: EditorRoutes

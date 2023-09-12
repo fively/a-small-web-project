@@ -46,7 +46,8 @@ export const LoginCenter = () => {
                   name="account"
                   rules={[
                     { required: true, message: '请输入登录账号！' },
-                    { type: 'string', min: 2, message: '登录账号长度不能小于2个字符！' }
+                    { type: 'string', min: 2, max: 20, message: '登录账号长度在 2-20 之间！' },
+                    { pattern: /^\w+$/, message: '登录账号格式不正确' }
                   ]}
                 >
                   <Input placeholder="请输入登录账号" />

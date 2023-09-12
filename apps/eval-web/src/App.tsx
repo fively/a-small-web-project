@@ -1,8 +1,8 @@
-import { Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { ThemeProvider } from '@sportback/core'
 
 import routes from './routes/index'
+import { AppProvider } from './providers'
+import { ThemeProvider } from '@sportback/core'
 
 function App() {
   const router = createBrowserRouter([
@@ -14,9 +14,9 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Suspense>
+      <AppProvider>
         <RouterProvider router={router} />
-      </Suspense>
+      </AppProvider>
     </ThemeProvider>
   )
 }

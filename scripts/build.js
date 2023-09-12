@@ -19,14 +19,18 @@ const appNames = readdirSync(appPath)
 // 不存在或者等于all时，打所有的项目包
 if (!buildAppName || buildAppName === 'all') {
   for (let appName of appNames) {
-    if (appName === '.DS_Store') continue
+    if (appName === '.DS_Store' || appName === 'README.md') continue
     // 执行启动指令
     try {
-      console.log(`------------------------ 【${appName}】打包开始 ------------------------`)
+      console.log(
+        `------------------------ 【${appName}】打包开始 ------------------------`
+      )
       await execa('pnpm', ['run', '--filter', appName, 'build'], {
         stdio: 'inherit'
       })
-      console.log(`------------------------ 【${appName}】打包结束 ------------------------`)
+      console.log(
+        `------------------------ 【${appName}】打包结束 ------------------------`
+      )
     } catch (e) {
       console.error('error:', e)
       process.exit(1)
@@ -38,7 +42,11 @@ if (!buildAppName || buildAppName === 'all') {
 
 // 单个时校验是否存在于列表中
 if (!appNames.includes(buildAppName)) {
-  console.warn(`项目名称【${buildAppName}】不存在于项目列表【${appNames.join('、')}】中，请核对！！`)
+  console.warn(
+    `项目名称【${buildAppName}】不存在于项目列表【${appNames.join(
+      '、'
+    )}】中，请核对！！`
+  )
   process.exit(1)
 }
 

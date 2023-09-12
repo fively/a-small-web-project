@@ -9,7 +9,7 @@ export const EditorRoutes = [
     element: <Main />,
     handle: {
       title: '',
-      functionCode: ''
+      functionCode: 'question'
     }
   },
   {
@@ -17,7 +17,7 @@ export const EditorRoutes = [
     element: <Preview />,
     handle: {
       title: '',
-      functionCode: ''
+      functionCode: 'question'
     }
   }
 ]

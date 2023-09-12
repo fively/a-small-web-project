@@ -1,5 +1,4 @@
 import { request } from '@/utils'
-import { AppModule, AppNav } from '@/types'
 
 /**
  * 加载功能权限
